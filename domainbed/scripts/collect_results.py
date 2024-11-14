@@ -108,9 +108,9 @@ def print_results_tables(records, selection_method, latex):
     """Given all records, print a results table for each dataset."""
     grouped_records = reporting.get_grouped_records(records)
 
-    if selection_method == model_selection.IIDAutoLRAccuracySelectionMethod:
-        for r in grouped_records:
-            r['records'] = merge_records(r['records'])
+    # if selection_method == model_selection.IIDAutoLRAccuracySelectionMethod:
+    #     for r in grouped_records:
+    #         r['records'] = merge_records(r['records'])
 
     grouped_records = grouped_records.map(lambda group:
         { **group, "sweep_acc": selection_method.sweep_acc(group["records"]) }
@@ -212,13 +212,13 @@ if __name__ == "__main__":
     else:
         print("Total records:", len(records))
 
-    if args.auto_lr:
-        SELECTION_METHODS = [model_selection.IIDAutoLRAccuracySelectionMethod]
-    else:
+    # if args.auto_lr:
+        # SELECTION_METHODS = [model_selection.IIDAutoLRAccuracySelectionMethod]
+    # else:
         SELECTION_METHODS = [
-            model_selection.IIDAccuracySelectionMethod,
+            # model_selection.IIDAccuracySelectionMethod,
             model_selection.LeaveOneOutSelectionMethod,
-            model_selection.OracleSelectionMethod,
+            # model_selection.OracleSelectionMethod,
         ]
 
     for selection_method in SELECTION_METHODS:
