@@ -269,6 +269,7 @@ class SVIRO(MultipleEnvironmentImageFolder):
 
 class FoodDG(MultipleEnvironmentImageFolder):
     CHECKPOINT_FREQ = 300
+    N_WORKERS = 2
     ENVIRONMENTS = ["Food101", "MAFood121", "UECFood256"]
     def __init__(self, root, test_envs, hparams):
         self.dir = os.path.join(root, "FoodDG/")
